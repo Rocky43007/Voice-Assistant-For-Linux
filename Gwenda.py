@@ -4,8 +4,6 @@ import os
 import webbrowser
 import smtplib
 from googlesearch import search
-import Tkinter
-
 
 
 def talkToMe(audio):
