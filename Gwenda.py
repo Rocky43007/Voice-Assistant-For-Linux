@@ -67,7 +67,7 @@ def assistant(command):
         def contacts():
             # copy and paste module after talkToMe('Email Sent') and change friend to other contact name
             if 'friend' in recipient:
-                content = input('Message(Do not press enter until message has finished): ')
+                content = raw_input('Message(Do not press enter until message has finished): ')
 
                 #init gmail SMTP
                 mail = smtplib.SMTP('smtp.gmail.com', 587)
