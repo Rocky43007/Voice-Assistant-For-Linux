@@ -1,9 +1,13 @@
+#Made by Arnab Chakraborty
 from gtts import gTTS
 import speech_recognition as sr
 import os
 import webbrowser
 import smtplib
 from googlesearch import search
+import Contacts as c
+
+
 
 
 def talkToMe(audio):
@@ -21,25 +25,23 @@ def myCommand():
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source, duration=1)
         audio = r.listen(source)
-
-    try:
         command = r.recognize_google(audio)
-        print('You said: ' + command + ' /n')
+        print("Gwenda thinks you said " + command)
 
     except sr.UnknownValueError:
+        talkToMe('Sorry, I did not understand. Please repeat.')
         assistant(myCommand())
 
-    except r.non_speaking_duration:
-        exit()
 
     return command
 
 
 def assistant(command):
     if 'open reddit' in command:
-        chrome_path = '/usr/bin/firefox'
-        url = 'https://www.reddit.com'
-        webbrowser.get(chrome_path).open(url)
+        try:
+            firefox_path = '/usr/bin/firefox'
+            url = 'https://www.reddit.com'
+            webbrowser.get(firefox_path).open(url)
 
     if 'test' in command:
         talkToMe('test')
@@ -62,52 +64,9 @@ def assistant(command):
         print('What is your password?')
         password = raw_input('Password: ')
         talkToMe('Who is the recipient?')
-        recipient = myCommand()
+        c.contacts()
 
-        def contacts():
-            # copy and paste module after talkToMe('Email Sent') and change friend to other contact name
-            if 'friend' in recipient:
-                content = raw_input('Message(Do not press enter until message has finished): ')
 
-                #init gmail SMTP
-                mail = smtplib.SMTP('smtp.gmail.com', 587)
-                #identify to the Server
-                mail.ehlo()
-                #start the Encryption for session
-                mail.starttls()
-                #login
-                mail.login(email_address, password)
-                #change Person Name to Contact Full Name. Change recipient email address to the email address you are going to send the message to.
-                #mail.sendmail('Person Name', 'recipient email address', content)
-                #send message (duh)
-                mail.sendmail('Arnab Chakraborty', 'arnab.chakraborty@thekaustschool.org', content)
-                #close connection
-                mail.close()
-
-                talkToMe('Email Sent')
-
-            if 'school friend' in recipient:
-                content = raw_input('Message(Do not press enter until message has finished): ')
-
-                #init gmail SMTP
-                mail = smtplib.SMTP('smtp.gmail.com', 587)
-                #identify to the Server
-                mail.ehlo()
-                #start the Encryption for session
-                mail.starttls()
-                #login
-                mail.login(email_address, password)
-                #change Person Name to Contact Full Name. Change recipient email address to the email address you are going to send the message to.
-                #mail.sendmail('Person Name', 'recipient email address', content)
-                #send message (duh)
-                mail.sendmail('John Kim', 'john.kim3.1415@gmail.com', content)
-                #close connection
-                mail.close()
-
-                talkToMe('Email Sent')
-            #Start your own contacts after this comment
-        if recipient == contacts():
-            contacts()
 
 
 talkToMe('I am ready')
