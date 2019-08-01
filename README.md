@@ -1,4 +1,4 @@
-# Voice-Assistant-For-Linux
+# Voice-Assistant-For-Linux (Does not work right now)
 This is a voice assistant made in Python. Right Now it supports linux based distros, but will later work with other OSes.
 Plugin Requirements:
 - gtts
