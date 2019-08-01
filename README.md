@@ -5,5 +5,6 @@ Plugin Requirements:
 - Speech Recognition
 - googlesearch
 - pyaudio
+
 System Requirements:
 - portaudio v19 (Required for pyaudio)
