@@ -8,3 +8,4 @@ Plugin Requirements:
 
 System Requirements:
 - portaudio v19 (Required for pyaudio)
+- mpg123 (For Linux Only)
