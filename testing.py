@@ -6,7 +6,7 @@ def read_or_new_pickle(true, default):
         with open('fname', "rb") as f:
             try:
                 return pickle.load(f)
-            except Exception: # so many things could go wrong, can't be more specific.
+            except Exception:  # so many things could go wrong, can't be more specific.
                 pass
     with open('fname', "wb") as f:
         pickle.dump(default, f)
